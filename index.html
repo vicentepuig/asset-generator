@@ -3,26 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Asset Generator</title>
+  <title>Relvo Assets Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d14;
-      --surface: #13131e;
-      --surface2: #1a1a28;
-      --border: #2a2a40;
-      --accent: #6366f1;
-      --accent2: #818cf8;
-      --text: #e2e2f0;
-      --muted: #6b6b8a;
+      --bg: #E8E8E8;
+      --surface: #FFFFFF;
+      --surface2: #F0F0F0;
+      --border: #D0D0D0;
+      --accent: #13131E;
+      --accent2: #3F28B2;
+      --text: #13131E;
+      --muted: #909090;
       --radius: 10px;
     }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 14px;
       min-height: 100vh;
       display: flex;
@@ -30,19 +33,23 @@
     }
 
     header {
-      padding: 16px 28px;
+      padding: 14px 28px;
       border-bottom: 1px solid var(--border);
+      background: var(--surface);
       display: flex;
       align-items: center;
-      gap: 10px;
+      justify-content: space-between;
       flex-shrink: 0;
     }
-    header h1 { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; }
-    header .pill {
-      font-size: 11px; color: var(--muted);
-      background: var(--surface2); border: 1px solid var(--border);
-      padding: 2px 8px; border-radius: 20px;
+    header h1 {
+      font-size: 15px; font-weight: 500; letter-spacing: -0.02em;
+      color: var(--text);
     }
+    .header-brand {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--muted); font-size: 11px; font-weight: 500;
+    }
+    .header-brand svg { height: 16px; width: auto; display: block; }
 
     .layout {
       display: grid;
@@ -74,7 +81,8 @@
     .sidebar-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
     .section-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      font-family: 'Geist Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
     }
 
@@ -106,8 +114,8 @@
       font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
       padding: 2px 7px; border-radius: 5px;
     }
-    .slot-tag.outer { background: rgba(99,102,241,0.15); color: var(--accent2); border: 1px solid rgba(99,102,241,0.25); }
-    .slot-tag.inner { background: rgba(255,255,255,0.05); color: #9090b0; border: 1px solid rgba(255,255,255,0.08); }
+    .slot-tag.outer { background: rgba(63,40,178,0.1); color: var(--accent2); border: 1px solid rgba(63,40,178,0.2); }
+    .slot-tag.inner { background: rgba(0,0,0,0.06); color: #666; border: 1px solid rgba(0,0,0,0.1); }
 
     .slot-pct { font-size: 10px; color: var(--muted); }
 
@@ -144,12 +152,13 @@
     /* ── RANDOMIZE ── */
     .btn-random {
       width: 100%; padding: 9px; border-radius: 8px;
-      background: var(--surface2); border: 1px solid var(--border);
-      color: var(--text); font-size: 12px; font-weight: 600;
+      background: var(--accent); border: 1px solid var(--accent);
+      color: #fff; font-size: 12px; font-weight: 600;
+      font-family: 'Instrument Sans', sans-serif;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       gap: 7px; transition: all 0.15s;
     }
-    .btn-random:hover { border-color: var(--accent); color: var(--accent2); }
+    .btn-random:hover { background: var(--accent2); border-color: var(--accent2); }
     .btn-random:disabled { opacity: 0.35; cursor: not-allowed; }
     .btn-random svg { transition: transform 0.3s; }
     .btn-random:hover svg { transform: rotate(180deg); }
@@ -192,8 +201,8 @@
       transition: border-color 0.15s;
     }
     .shape-card:hover { border-color: var(--accent2); }
-    .shape-card.selected-outer { border-color: var(--accent) !important; box-shadow: 0 0 0 1px var(--accent); }
-    .shape-card.selected-inner { border-color: #9090b0 !important; box-shadow: 0 0 0 1px #9090b0; }
+    .shape-card.selected-outer { border-color: var(--accent2) !important; box-shadow: 0 0 0 1px var(--accent2); }
+    .shape-card.selected-inner { border-color: #888 !important; box-shadow: 0 0 0 1px #888; }
 
     .shape-thumb {
       height: 64px; display: flex; align-items: center; justify-content: center;
@@ -204,7 +213,7 @@
     .shape-actions {
       display: none;
       position: absolute; inset: 0;
-      background: rgba(13,13,20,0.88);
+      background: rgba(232,232,232,0.92);
       flex-direction: column; align-items: center; justify-content: center;
       gap: 4px; padding: 6px;
     }
@@ -216,15 +225,15 @@
       border: none; cursor: pointer; transition: all 0.1s;
     }
     .action-btn.set-outer {
-      background: rgba(99,102,241,0.2); color: var(--accent2);
-      border: 1px solid rgba(99,102,241,0.3);
+      background: rgba(63,40,178,0.12); color: var(--accent2);
+      border: 1px solid rgba(63,40,178,0.25);
     }
-    .action-btn.set-outer:hover { background: rgba(99,102,241,0.4); }
+    .action-btn.set-outer:hover { background: rgba(63,40,178,0.22); }
     .action-btn.set-inner {
-      background: rgba(255,255,255,0.06); color: #b0b0d0;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.06); color: #555;
+      border: 1px solid rgba(0,0,0,0.12);
     }
-    .action-btn.set-inner:hover { background: rgba(255,255,255,0.12); }
+    .action-btn.set-inner:hover { background: rgba(0,0,0,0.12); }
 
     .shape-label {
       padding: 4px 6px; font-size: 9px; color: var(--muted);
@@ -240,8 +249,8 @@
       font-size: 8px; font-weight: 800; letter-spacing: 0.05em;
       padding: 1px 5px; border-radius: 3px; line-height: 1.5;
     }
-    .badge-outer { background: var(--accent); color: white; }
-    .badge-inner { background: #444465; color: #c0c0e0; }
+    .badge-outer { background: var(--accent2); color: white; }
+    .badge-inner { background: #888; color: white; }
 
     /* ── CONTROLS ── */
     .control-row {
@@ -257,6 +266,7 @@
       border-radius: 50%; background: var(--accent); cursor: pointer;
     }
     .value-badge {
+      font-family: 'Geist Mono', monospace;
       font-size: 11px; font-weight: 600; color: var(--accent2);
       min-width: 34px; text-align: right;
     }
@@ -268,7 +278,11 @@
       border-radius: 8px; padding: 8px 10px;
       display: flex; flex-direction: column; gap: 6px;
     }
-    .color-slot-label { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; color: var(--muted); }
+    .color-slot-label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted);
+    }
     .color-slot-label.outer { color: var(--accent2); }
     .color-row { display: flex; align-items: center; gap: 6px; }
     input[type="color"].slot-color {
@@ -277,7 +291,7 @@
       cursor: pointer; background: none; flex-shrink: 0;
     }
     .color-hex {
-      font-size: 11px; color: var(--text); font-family: monospace;
+      font-size: 11px; color: var(--text); font-family: 'Geist Mono', monospace;
       background: var(--bg); border: 1px solid var(--border);
       border-radius: 4px; padding: 3px 5px; width: 100%;
       outline: none; text-transform: uppercase;
@@ -302,7 +316,7 @@
     }
     .bg-swatch.active { border-color: var(--accent2); }
     .bg-swatch.checker {
-      background: repeating-conic-gradient(#3a3a50 0% 25%, #1a1a28 0% 50%) 0 0 / 10px 10px;
+      background: repeating-conic-gradient(#bbb 0% 25%, #e8e8e8 0% 50%) 0 0 / 10px 10px;
     }
     input[type="color"].swatch-color {
       width: 24px; height: 24px; border-radius: 50%;
@@ -316,10 +330,11 @@
       background: var(--surface); border: 1px solid var(--border);
       color: var(--muted); padding: 7px; border-radius: 7px;
       cursor: pointer; font-size: 10px; font-weight: 600;
+      font-family: 'Geist Mono', monospace;
       transition: all 0.1s; text-align: center;
     }
     .size-btn:hover { border-color: var(--accent); color: var(--text); }
-    .size-btn.active { border-color: var(--accent); color: var(--accent2); background: rgba(99,102,241,0.08); }
+    .size-btn.active { border-color: var(--accent2); color: var(--accent2); background: rgba(63,40,178,0.06); }
 
     .custom-size {
       display: flex; gap: 5px; align-items: center; margin-top: 6px;
@@ -340,12 +355,13 @@
       border: none; transition: all 0.15s;
       display: flex; align-items: center; justify-content: center; gap: 6px;
     }
-    .btn-primary { background: var(--accent); color: white; }
-    .btn-primary:hover { background: #5254cc; }
+    .btn-primary { background: var(--accent); color: white; font-family: 'Instrument Sans', sans-serif; }
+    .btn-primary:hover { background: var(--accent2); }
     .btn-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
     .btn-secondary {
       background: var(--surface); color: var(--text);
       border: 1px solid var(--border);
+      font-family: 'Instrument Sans', sans-serif;
     }
     .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); }
     .btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -377,12 +393,12 @@
       flex: 1; overflow: auto;
       display: flex; align-items: center; justify-content: center;
       padding: 40px;
-      background: radial-gradient(ellipse at center, #181825 0%, var(--bg) 70%);
+      background: #D4D4D4;
     }
 
     .canvas-frame {
       position: relative;
-      box-shadow: 0 0 0 1px var(--border), 0 24px 80px rgba(0,0,0,0.6);
+      box-shadow: 0 0 0 1px var(--border), 0 12px 40px rgba(0,0,0,0.18);
       border-radius: 2px;
       flex-shrink: 0;
     }
@@ -412,8 +428,14 @@
 <body>
 
 <header>
-  <h1>Asset Generator</h1>
-  <span class="pill">Relvo</span>
+  <h1>Relvo Assets Generator</h1>
+  <div class="header-brand">
+    <span>Desarrollado por</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3133.63 453.85" fill="#434343">
+      <path d="M138.54,208.12h-9.4v-86.5h8.14c26.34,0,47.65,11.91,47.65,41.37,0,25.7-13.8,45.13-46.4,45.13M659.45,177.01V7.52h-127.25v276.45c0,30.09-16.93,51.4-47.65,51.4s-48.26-21.31-48.26-55.17V7.52h-129.14v108.7C290.52,44.94,231.5,7.52,129.77,7.52H0v438.81h129.14v-136.66h5.64c104.12,0,156.86-49.17,172.36-108.46v95.29c0,102.18,70.85,156.72,177.41,156.72s174.9-56.42,174.9-161.1v-11.51c20.76,100.42,105.3,173.24,218.12,173.24,29.47,0,65.84-5.64,92.78-16.3v-144.18c-15.67,18.18-46.38,35.1-87.13,35.1-61.43,0-99.67-45.13-99.67-101.55s36.36-101.55,99.67-101.55c41.37,0,71.45,18.81,87.13,38.24V14.41c-26.32-9.4-61.43-14.41-92.14-14.41-99.19,0-195.97,58.45-218.76,177.01"/>
+      <path d="M2565.18,390.92l-56.39-134.53c24.58-14.13,48.92-43.22,56.39-80.83v215.36ZM2394.07,198.71h-9.39v-82.12h8.14c26.33,0,47.64,11.91,47.64,41.37,0,21.31-13.78,40.75-46.38,40.75M2034.07,328.47c-61.45,0-99.67-45.13-99.67-101.55s36.35-101.55,99.67-101.55,99.65,45.77,99.65,101.55-39.47,101.55-99.65,101.55M3079.27,201.03l-46.31-56.64c-11.06-12.29-12.48-20.23-12.48-25.77,0-12.47,9.85-15.09,18.12-15.09,12.9,0,31.02,6.11,53.87,18.18l15.14,7.98V12.84l-7.45-2.16C3075.65,3.6,3052.3,0,3030.75,0c-78.77,0-127.7,46.15-127.7,120.43,0,40.16,13.95,74.9,42.33,105.84l49.01,58.69c12.05,14.46,16.97,24.82,16.97,35.74,0,4.93,0,19.94-21.75,19.94-17.31,0-39.7-9.88-68.47-30.19l-16.27-11.48v103.93l-8.71-16.26-93.38-174.15,118.48-204.99h-134.15l-92.77,170.51V7.52h-129.14v114.28c-12.46-73.55-72.36-114.28-179.88-114.28h-129.77v157.88C2230.52,60.03,2142.29,0,2035.94,0,1953.03,0,1868.33,41.02,1828.6,123.67l23.69-116.15h-130.38l-22.57,211.25-50.16-211.25h-100.92l-45.13,211.25-24.44-211.25h-245.07v154.21h-107.83V7.52h-129.13v438.81h129.13v-159.22h107.83v159.22h129.13V99.22l71.44,347.73h116.59l48.28-231.31,50.14,231.31h113.47l42.84-210.02c2.65,122.3,101.19,216.91,229.82,216.91,98.69,0,193.95-61.02,220.21-166.47v158.95h129.15v-173.64h5.64l53.29,173.64h250.72v-163.61l4.38-9.4,87.75,173.01h153.54c19.02,4.73,39.25,7.52,58.67,7.52,83.25,0,134.96-49.62,134.96-129.51,0-51.87-20.91-85.77-54.36-123.31"/>
+    </svg>
+  </div>
 </header>
 
 <div class="layout">
