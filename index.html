@@ -27,13 +27,15 @@
       color: var(--text);
       font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 14px;
-      min-height: 100vh;
+      height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
     header {
-      padding: 14px 28px;
+      padding: 10px 24px;
       border-bottom: 1px solid var(--border);
       background: var(--surface);
       display: flex;
@@ -70,10 +72,10 @@
     .sidebar-scroll {
       flex: 1;
       overflow-y: auto;
-      padding: 20px 18px;
+      padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 12px;
     }
 
     .sidebar-scroll::-webkit-scrollbar { width: 4px; }
@@ -82,8 +84,8 @@
 
     .section-label {
       font-family: 'Geist Mono', monospace;
-      font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+      font-size: 9px; font-weight: 400; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
     }
 
     /* ── SLOTS ── */
@@ -106,7 +108,7 @@
 
     .slot-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 10px;
+      padding: 5px 8px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -120,9 +122,9 @@
     .slot-pct { font-size: 10px; color: var(--muted); }
 
     .slot-body {
-      height: 90px;
+      height: 60px;
       display: flex; align-items: center; justify-content: center;
-      padding: 8px;
+      padding: 6px;
       position: relative;
     }
 
@@ -137,10 +139,10 @@
     .slot-preview svg { max-width: 100%; max-height: 70px; }
 
     .slot-footer {
-      padding: 6px 10px;
+      padding: 4px 8px;
       border-top: 1px solid var(--border);
       display: flex; align-items: center; justify-content: space-between;
-      min-height: 28px;
+      min-height: 22px;
     }
     .slot-name { font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; }
     .btn-clear {
@@ -151,7 +153,7 @@
 
     /* ── RANDOMIZE ── */
     .btn-random {
-      width: 100%; padding: 9px; border-radius: 8px;
+      width: 100%; padding: 7px; border-radius: 8px;
       background: var(--accent); border: 1px solid var(--accent);
       color: #fff; font-size: 12px; font-weight: 600;
       font-family: 'Instrument Sans', sans-serif;
@@ -189,8 +191,8 @@
 
     .library-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
     }
 
     .shape-card {
@@ -205,10 +207,10 @@
     .shape-card.selected-inner { border-color: #888 !important; box-shadow: 0 0 0 1px #888; }
 
     .shape-thumb {
-      height: 64px; display: flex; align-items: center; justify-content: center;
-      padding: 6px; background: var(--bg);
+      height: 46px; display: flex; align-items: center; justify-content: center;
+      padding: 5px; background: var(--bg);
     }
-    .shape-thumb svg { max-width: 100%; max-height: 52px; }
+    .shape-thumb svg { max-width: 100%; max-height: 36px; }
 
     .shape-actions {
       display: none;
@@ -267,7 +269,7 @@
     }
     .value-badge {
       font-family: 'Geist Mono', monospace;
-      font-size: 11px; font-weight: 600; color: var(--accent2);
+      font-size: 11px; font-weight: 400; color: var(--accent2);
       min-width: 34px; text-align: right;
     }
 
@@ -275,18 +277,18 @@
     .color-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .color-slot {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; padding: 8px 10px;
-      display: flex; flex-direction: column; gap: 6px;
+      border-radius: 8px; padding: 6px 8px;
+      display: flex; flex-direction: column; gap: 5px;
     }
     .color-slot-label {
       font-family: 'Geist Mono', monospace;
-      font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+      font-size: 9px; font-weight: 400; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--muted);
     }
     .color-slot-label.outer { color: var(--accent2); }
     .color-row { display: flex; align-items: center; gap: 6px; }
     input[type="color"].slot-color {
-      width: 28px; height: 28px; border-radius: 6px;
+      width: 22px; height: 22px; border-radius: 5px;
       border: 1px solid var(--border); padding: 2px;
       cursor: pointer; background: none; flex-shrink: 0;
     }
@@ -299,9 +301,9 @@
     .color-hex:focus { border-color: var(--accent); }
 
     /* ── PRESET PALETTE ── */
-    .preset-palette { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .preset-palette { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
     .preset-swatch {
-      width: 20px; height: 20px; border-radius: 4px; cursor: pointer;
+      width: 14px; height: 14px; border-radius: 3px; cursor: pointer;
       border: 2px solid transparent; transition: border-color 0.15s, transform 0.1s;
       flex-shrink: 0;
     }
@@ -311,7 +313,7 @@
     /* ── BG ── */
     .bg-row { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
     .bg-swatch {
-      width: 24px; height: 24px; border-radius: 50%; cursor: pointer;
+      width: 18px; height: 18px; border-radius: 50%; cursor: pointer;
       border: 2px solid transparent; transition: border-color 0.15s;
     }
     .bg-swatch.active { border-color: var(--accent2); }
@@ -319,7 +321,7 @@
       background: repeating-conic-gradient(#bbb 0% 25%, #e8e8e8 0% 50%) 0 0 / 10px 10px;
     }
     input[type="color"].swatch-color {
-      width: 24px; height: 24px; border-radius: 50%;
+      width: 18px; height: 18px; border-radius: 50%;
       border: 2px solid var(--border); padding: 0;
       cursor: pointer; background: none; overflow: hidden;
     }
@@ -328,8 +330,8 @@
     .size-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .size-btn {
       background: var(--surface); border: 1px solid var(--border);
-      color: var(--muted); padding: 7px; border-radius: 7px;
-      cursor: pointer; font-size: 10px; font-weight: 600;
+      color: var(--muted); padding: 5px; border-radius: 7px;
+      cursor: pointer; font-size: 10px; font-weight: 400;
       font-family: 'Geist Mono', monospace;
       transition: all 0.1s; text-align: center;
     }
@@ -350,7 +352,7 @@
     /* ── EXPORT ── */
     .export-row { display: flex; gap: 7px; }
     .btn {
-      flex: 1; padding: 9px; border-radius: 7px;
+      flex: 1; padding: 7px; border-radius: 7px;
       font-size: 12px; font-weight: 600; cursor: pointer;
       border: none; transition: all 0.15s;
       display: flex; align-items: center; justify-content: center; gap: 6px;
@@ -370,7 +372,7 @@
     .canvas-area { display: flex; flex-direction: column; overflow: hidden; }
 
     .canvas-toolbar {
-      padding: 10px 20px; border-bottom: 1px solid var(--border);
+      padding: 7px 16px; border-bottom: 1px solid var(--border);
       display: flex; align-items: center; gap: 10px; flex-shrink: 0;
     }
 
@@ -393,12 +395,12 @@
       flex: 1; overflow: auto;
       display: flex; align-items: center; justify-content: center;
       padding: 40px;
-      background: #D4D4D4;
+      background: #E8E8E8;
     }
 
     .canvas-frame {
       position: relative;
-      box-shadow: 0 0 0 1px var(--border), 0 12px 40px rgba(0,0,0,0.18);
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.12);
       border-radius: 2px;
       flex-shrink: 0;
     }
@@ -554,12 +556,13 @@
       <div>
         <div class="section-label">Background</div>
         <div class="bg-row">
-          <div class="bg-swatch active" style="background:#0d0d14" data-color="#0d0d14" onclick="setBg(this)"></div>
+          <div class="bg-swatch active" style="background:#E8E8E8;border-color:var(--accent2)" data-color="#E8E8E8" onclick="setBg(this)"></div>
+          <div class="bg-swatch" style="background:#13131E" data-color="#13131E" onclick="setBg(this)"></div>
           <div class="bg-swatch" style="background:#ffffff" data-color="#ffffff" onclick="setBg(this)"></div>
-          <div class="bg-swatch" style="background:#f5f0eb" data-color="#f5f0eb" onclick="setBg(this)"></div>
-          <div class="bg-swatch" style="background:#1e1b4b" data-color="#1e1b4b" onclick="setBg(this)"></div>
+          <div class="bg-swatch" style="background:#B8D12A" data-color="#B8D12A" onclick="setBg(this)"></div>
+          <div class="bg-swatch" style="background:#3F28B2" data-color="#3F28B2" onclick="setBg(this)"></div>
           <div class="bg-swatch checker" data-color="transparent" onclick="setBg(this)"></div>
-          <input type="color" class="swatch-color" id="custom-bg" value="#0d0d14" oninput="setCustomBg(this.value)" title="Custom" />
+          <input type="color" class="swatch-color" id="custom-bg" value="#E8E8E8" oninput="setCustomBg(this.value)" title="Custom" />
         </div>
       </div>
 
@@ -572,7 +575,7 @@
           <button class="size-btn" onclick="setSize(1200,630,this)">1200 × 630</button>
           <button class="size-btn" onclick="setSize(2000,2000,this)">2000 × 2000</button>
         </div>
-        <div class="custom-size">
+        <div class="custom-size" style="display:none">
           <input type="number" id="custom-w" placeholder="W" min="100" max="4000" />
           <span>×</span>
           <input type="number" id="custom-h" placeholder="H" min="100" max="4000" />
@@ -612,7 +615,7 @@
     </div>
 
     <div class="canvas-viewport" id="canvas-viewport">
-      <div class="canvas-frame" id="canvas-frame" style="width:800px;height:800px;background:#0d0d14;">
+      <div class="canvas-frame" id="canvas-frame" style="width:800px;height:800px;background:transparent;">
         <div class="empty-state" id="empty-state">
           <div class="empty-ring">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="10" stroke-dasharray="3 3"/></svg>
@@ -637,7 +640,7 @@
 
   const config = {
     scale: 0.67, // fixed: inner is always 33% smaller than outer
-    bgColor: '#0d0d14',
+    bgColor: '#E8E8E8',
     canvasW: 800,
     canvasH: 800,
     zoom: 1,
@@ -1023,21 +1026,25 @@
     document.getElementById(`hex-${slot}`).value = slotColors[slot].toUpperCase();
   }
 
+  function applyBgToViewport(color) {
+    const viewport = document.getElementById('canvas-viewport');
+    viewport.style.background = color === 'transparent'
+      ? 'repeating-conic-gradient(#bbb 0% 25%, #e8e8e8 0% 50%) 0 0 / 20px 20px'
+      : color;
+  }
+
   function setBg(el) {
     document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
     el.classList.add('active');
     config.bgColor = el.dataset.color;
-    const frame = document.getElementById('canvas-frame');
-    frame.style.background = config.bgColor === 'transparent'
-      ? 'repeating-conic-gradient(#3a3a50 0% 25%, #1a1a28 0% 50%) 0 0 / 20px 20px'
-      : config.bgColor;
+    applyBgToViewport(config.bgColor);
     renderComposite();
   }
 
   function setCustomBg(val) {
     document.querySelectorAll('.bg-swatch').forEach(s => s.classList.remove('active'));
     config.bgColor = val;
-    document.getElementById('canvas-frame').style.background = val;
+    applyBgToViewport(val);
     renderComposite();
   }
 
